@@ -1,0 +1,23 @@
+# 1. Use Node 20 base image
+FROM node:20
+
+# 2. Set working directory inside container
+WORKDIR /app
+
+
+COPY package*.json ./
+
+# 4. Install dependencies
+RUN npm install
+
+# 5. Copy all source files
+COPY . .
+
+# 6. Build the TypeScript project (compiles src/index.ts -> dist/index.js)
+RUN npm run build
+
+# 7. Expose the application port (3000 usually, or whatever you use)
+EXPOSE 3000
+
+# 8. Start the compiled JavaScript app
+CMD ["npm", "run", "start"]
