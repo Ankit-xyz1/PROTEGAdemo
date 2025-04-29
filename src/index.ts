@@ -17,12 +17,15 @@ app.use(express.json())
 
 //routes specification
 app.use('/health',healthRoute);
-app.use('/api/offer',offer) 
+app.use('/api',offer)
 
 app.get('/', (req:Request, res:Response) => {
-  res.send('welcome to portega Ai');
+  res.send('welcome to portega Ai')
 })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+export default app;
